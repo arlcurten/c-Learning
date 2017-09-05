@@ -1,0 +1,30 @@
+https://openhome.cc/Gossip/CppGossip/Reference.html
+
+參考（Reference）型態代表了變數或物件的一個別名（Alias），參考型態可以直接取得變數或物件的位址，並間接透過參考型態別名來操作物件， 作用類似於指標，但卻不必使用指標語法，也就是不必使用*運算子來提取值。
+
+要定義參考型態，在定義型態時於型態關鍵字後加上&運算子，例如：
+int var = 10;  // 定義變數
+int *ptr = &var; // 定義指標，指向var的位址
+int &ref = var;  // 定義參考，代表var變數
+
+上面的程式中，最後一行即是在定義參考型態，注意參考型態一定要初始化，例如下面的定義是不能通過編譯的：
+int &ref; // error, `ref' declared as reference but not initialized 
+為何參考型態一定要初始化？因為參考初始化後就不能改變它所代表的物件，任何指定給參考的值，就相當於指定給原來的物件，例如：
+
+
+
+蔡媽的OOP裡面也有類似的複雜例子:
+如果要定義指標型態的參考該如何呢？很簡單，指標型態是使用type*來宣告，而參考則是在名稱前加上&，所以指標型態的參考就如下所 示：
+type *&refOfPtr = somePtr;
+
+一個具體的例子如下：
+int var = 10;
+int *ptr = &var;
+int *&ref = ptr;
+
+舉一反三的話，如果有個const變數，您可以使用一個const指標，並可以如下宣告一個指標的參考：
+const int var = 10;
+const int *ptr = &var;
+const int *&ref = ptr;
+
+事實上很少會直接如上的方式來使用參考，而是用於函式傳遞時一種「傳參考」（Pass by reference）方式，目的在於可於函式中直接操作目標變數或物件，或者是避免複製一個大型物件，在之後要紹函式時會見到相關應用。
