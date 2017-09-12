@@ -10,15 +10,18 @@
 using namespace std;
 
 int main() {
-/*
+
     //====1D araay====//
 
 	int a[3] = {1,2,3};
 	int *p;
 	p = a;
-	cout << a <<endl;
-	cout << *a << endl;
-	cout << *(p+1);
+	cout << a <<endl;  //address printed
+	cout << *a << endl; //1
+	cout << *(p+1) << endl; //2
+
+
+
 
 	//====2D array====//
 
@@ -27,11 +30,22 @@ int main() {
 					   {7,8,9}};
 
 	int (*pq);
-	p = array1[1];
-	cout << pq[2];
+	pq = array1[1];
+	cout << *pq << endl;
+	//output = 4
+	//因為pq收到的是array1[1]所存的值，也就是某個address，*pq則是按照這個address取值，就會取到4
 
+	cout << pq[2] << endl;
 	//output = 6
 	//因為pq用來取代array[1]，所以pq[2]=array[1][2]
+	//(也就是address+2的意思)
+
+	//array的寫法可以想成是: address[num] -> 取值 (address+num)
+	//array -> 存放address的變數
+	//array[n] ->取這個address的值，並且這個address有＋n
+	//array[n][m] -> 取這個address的值，並且這個address有＋n，且取出來的值其實是另個address，因此後面的m是用來再加上去，最終取出整個所代表的值
+
+
 
     //====2D array====//
 	int array2[3][3] = {{1,2,3},
@@ -40,11 +54,13 @@ int main() {
 
 	int (*pp)[3];
 	pp = array2;
-	cout << pp[2];
-
+	cout << (*pp)[2] << endl;
 	//output = 3
 	//因為pp存的是array的address，*pp為array address指向的值，也就是sub array的address，這個意思等同array[0]
-*/
+
+
+
+
     //	====2D array & pointer====*/
 	int array3[3][3] = {{1,2,3},
 					   {4,5,6},
@@ -53,9 +69,11 @@ int main() {
 	int **ppp;
 	*ppp = array3[1];
 	cout << *( (*ppp)+1 );
-	//cout << *( (* (ppp+1) ) );//此行無意義，因為*(adress) = *(array3[1]) = *(*ppp)，*ppp為array3[1]的值，ppp只代表了指向這個值的address (pointer's address)
-
 	//output = 5
 	//*(*ppp)，因為*ppp存的最後要指向的位置，給予array3[1]即是第二row的位置，所以最後再加1就會得到第二row的第二column
+
+	cout << *( (* (ppp+1) ) );
+	//此行無意義，因為*(adress) = *(array3[1]) = *(*ppp)，*ppp為array3[1]的值，ppp只代表了指向這個值的address (pointer's address)
+
 	return 0;
 }
