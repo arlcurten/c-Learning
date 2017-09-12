@@ -1,0 +1,67 @@
+//============================================================================
+// Name        : tst.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+int main() {
+/*
+    //====1D araay====//
+
+	int a[3] = {1,2,3};
+	int *p;
+	p = a;
+	cout << a <<endl;
+	cout << *a << endl;
+	cout << *(p+1);
+
+
+
+
+	//====2D array====//
+
+	int array1[3][3] = {{1,2,3},
+					   {4,5,6},
+					   {7,8,9}};
+
+	int (*pq);
+	p = array1[1];
+	cout << pq[2];
+
+	//output = 6
+	//因為pq用來取代array[1]，所以pq[2]=array[1][2]
+
+
+
+    //====2D array====//
+	int array2[3][3] = {{1,2,3},
+					   {4,5,6},
+					   {7,8,9}};
+
+	int (*pp)[3];
+	pp = array2;
+	cout << pp[2];
+
+	//output = 3
+	//因為pp存的是array的address，*pp為array address指向的值，也就是sub array的address，這個意思等同array[0]
+*/
+
+
+    //	====2D array & pointer====*/
+	int array3[3][3] = {{1,2,3},
+					   {4,5,6},
+					   {7,8,9}};
+
+	int **ppp;
+	*ppp = array3[1];
+	cout << *( (*ppp)+1 );
+
+	//output =
+	//*(*ppp)，因為*ppp存的最後要指向的位置，給予array3[1]即是第二row的位置，所以最後再加1就會得到第二row的第二column
+	return 0;
+}
