@@ -1,0 +1,16 @@
+https://stackoverflow.com/questions/4533063/how-does-ifstreams-eof-work
+
+The EOF flag is only set once a read tries to read past the end of the file. 
+If I have a 3 byte file, and I only read 3 bytes, EOF is false, because I've not tried to read past the end of the file yet. 
+While this seems confusing for files, which typically know their size, 
+EOF is not known until a read is attempted on some devices, such as pipes and network sockets.
+
+EOF是一個flag，要先做read，讀到文件的結尾符號後，才會被設成true
+因此如果是用 
+while(file.eof()) 
+{
+  cin >> variable  //read
+}
+
+會遇到一開始flag還是false，但是讀了以後才發現已經是結尾，flag=True，下一次迴圈進來的時候才跳開
+
