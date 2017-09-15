@@ -1,0 +1,15 @@
+https://stackoverflow.com/questions/5724171/passing-an-array-by-reference
+
+void foo(int * x);
+void foo(int x[100]);
+void foo(int x[]);
+These three are different ways of declaring the same function. They're all treated as taking an int * parameter, you can pass any size array to them.
+
+void foo(int (&x)[100]);
+This only accepts arrays of 100 integers. You can safely use sizeof on x
+
+void foo(int & x[100]); // error
+This is parsed as an "array of references" - which isn't legal.
+
+##倒數第二個是正確的方法，為把X array當作reference。
+##最後一個不對，因為這樣子變成pass 一個reference array。
