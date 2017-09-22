@@ -1,0 +1,25 @@
+https://kheresy.wordpress.com/2013/12/27/c-stl-chrono/
+
+<time_point>
+##取當時的時間
+std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+std::cout << "Hello World\n";
+std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
+std::cout << "Printing took "
+  << std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count()
+  << "us.\n";
+透過 clock 類別所提供的 now() 這個函式，可以快速地取得現在的時間；
+而兩者相減的話，則會產生一個型別為 duration 的結果；
+在上面的例子裡面，就是一開始先取得當下的時間 t1，然後輸出一個字串後、再去取得一個時間 t2，之後兩者相減，就可以取得中間過程所花費的時間了。
+在這邊則是在相減後，把結果轉換成以 micro second 為單位後，再做輸出。
+##std如果有using namespace的話就不用打
+
+<duration>
+##時間的間隔，可用上面的time point取得時間點，時間點相減後可以assign給這個duration (記得用type case轉成duration格式)
+##輸出的話記得用duration.count()才能夠用cout印出
+typedef duration<long long> seconds;
+typedef duration<int, ratio<60> > minutes;
+std::chrono::minutes t1( 10 );
+std::chrono::seconds t2( 60 );
+std::chrono::seconds t3 = t1 - t2;
+std::cout << t3.count() << " second" << std::endl;
