@@ -1,0 +1,4 @@
+http://blog.jobbole.com/106516/
+
+__sync_lock_test_and_set用于将value的值写入ptr的位置，同时返回ptr之前存储的值，
+
