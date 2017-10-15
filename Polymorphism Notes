@@ -1,0 +1,10 @@
+##會create上層class的pointer來用，因為下層 is a 上層，上層的涵蓋比較廣，可以用來call其他的child。
+##但反過來則無法
+
+##如果沒有定義virtual的話，用哪一層的pointer or object來呼叫就會是那一層的。如果有定義的話則是polymorphism，在run-time的時候再決定
+
+##交大課本中的範例都是把變數設定成protected或是public，所以繼承的時候都會繼承到，就可以直接用。
+##萬一是private沒有繼承，也會有寫好的public method繼承下來可以直接呼叫
+
+##因為繼承下來等於是複製一份，所以其實可以用.上層class，或是上層class的pointer來呼叫其上層 (其值與本身這層複製的不同)
+
